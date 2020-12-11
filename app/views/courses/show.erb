@@ -1,0 +1,9 @@
+<h2> Show page </h2><br>
+<h3>Name: <%= @course.title %> </h3>
+
+<a href="/courses/<%= @course.id%>/edit"> Edit </a>
+
+<form method="post" action="/courses/<%=@course.id%>">
+<input type="hidden" name="_method" value="delete">
+<input type="submit" value="Delete">
+</form>

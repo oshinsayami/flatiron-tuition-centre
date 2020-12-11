@@ -1,4 +1,7 @@
 <% if logged_in? %>
-<h1>Logged in user: <%= current_user.email %></h3>
+<h1>Logged in user: <%= current_user.fullname %></h3>
 <% end %>
 <h1>List of courses</h1>
+<% @courses.each do |c| %>
+  <%= c.id %> -  <a href="/courses/<%= c.id%>" ><%= c.title %></a><br>
+  <% end %>
