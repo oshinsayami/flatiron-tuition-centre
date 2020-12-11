@@ -1,0 +1,4 @@
+<h1>List of teachers</h1>
+<% @teachers.each do |c| %>
+  <%= c.id %> -  <a href="/teachers/<%= c.id%>" ><%= c.name %></a><br>
+  <% end %>

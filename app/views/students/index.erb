@@ -1,1 +1,5 @@
 <h1> Index page </h1>
+<h1>List of students</h1>
+<% @students.each do |c| %>
+  <%= c.id %> -  <a href="/students/<%= c.id%>" ><%= c.name %></a><br>
+  <% end %>
