@@ -1,15 +1,22 @@
 <%if logged_in?%>
-<p align="right"><a href="/logout">Log out</a>
+<p align="right"><%= current_user.fullname %>|<a href="/logout">Log out</a>
 <%end%>
 <h1> Edit Teacher</h1>
 <form method="post" action="/teachers/<%=@teacher.id%>">
 <input type="hidden" name="_method" value="patch">
 
-<p>Name : <input name="teacher[name]" type="text" value="<%=@teacher.name%>"></p>
-<p>Email :<input name="teacher[email]" type="email" value="<%=@teacher.email%>"></p>
-<p>Address: <input name="teacher[address]" type="text" value="<%=@teacher.address%>"></p>
-<p>Course: <input name="teacher[course]" type="text" value="<%=@teacher.course%>"></p>
-<p>Student: <input name="teacher[student]" type="text" value="<%=@teacher.student%>"></p>
+<p>Name : <input name="teacher[name]" type="text" value="<%=@teacher.name%>" required></p>
+<p>Email :<input name="teacher[email]" type="email" value="<%=@teacher.email%>" required></p>
+<p>Address: <input name="teacher[address]" type="text" value="<%=@teacher.address%>" required></p>
+<p>Course:
+<select name="teacher[course]">
+  <option value="HTML">HTML</option>
+  <option value="Statistics">Statistics</option>
+  <option value="English">English</option>
+  <option value="CSS">CSS</option>
+  <option value="JAVA">JAVA</option>
+</select></p>
+<p>Student: <input name="teacher[student]" type="text" value="<%=@teacher.student%>" required></p>
 
 
 <input type="submit" value="Update">

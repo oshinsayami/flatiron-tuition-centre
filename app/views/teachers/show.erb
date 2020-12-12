@@ -1,5 +1,5 @@
 <%if logged_in? %>
-<p align="right"><a href="/logout">Log out</a></p>
+<p align="right"><%= current_user.fullname %>|<a href="/logout">Log out</a></p>
 <%end%>
 <a href="/teachers">Back</a><br>
 <br><p><b>Name: </b><%= @teacher.name %> </p>

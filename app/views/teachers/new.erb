@@ -1,13 +1,20 @@
 <%if logged_in?%>
-<p align="right"><a href="/logout">Log out</a>
+<p align="right"><%= current_user.fullname %>|<a href="/logout">Log out</a>
 
 <h2>Add Teachers </h2>
 <form method="post" action="/teachers">
 <p>Full Name : <input name="name" type="text" required></p>
 <p>Email: <input name="email" type="email" required></p>
-<p>Address: <input name="address" type="text"></p>
-<p>Course: <input name="course" type="text" required></p>
-<p>Student: <input name="student" type="text"></p>
+<p>Address: <input name="address" type="text" required></p>
+<p>Course: 
+<select name="course">
+  <option value="HTML">HTML</option>
+  <option value="Statistics">Statistics</option>
+  <option value="English">English</option>
+  <option value="CSS">CSS</option>
+  <option value="JAVA">JAVA</option>
+</select></p>
+<p>Student: <input name="student" type="text" required></p>
 <input type="submit" value="Add">
 </form>
 <%end%>

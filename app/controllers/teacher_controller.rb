@@ -1,6 +1,8 @@
 class TeacherController < ApplicationController
 
     get '/teachers' do
+        redirect_if_not_logged_in
+        # binding.pry
         @teachers = Teacher.all
         erb :"teachers/index"
     end
@@ -35,8 +37,6 @@ class TeacherController < ApplicationController
         redirect_if_not_authorized
         @teacher.update(params["teacher"])
         redirect "/teachers/#{@teacher.id}"
-
-
     end
 
     delete '/teachers/:id' do
