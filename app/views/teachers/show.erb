@@ -1,10 +1,12 @@
 <%if logged_in? %>
-<p align="right"><a href="/logout">Log out</a>
+<p align="right"><a href="/logout">Log out</a></p>
 <%end%>
-<h2> Show page </h2><br>
-<h3>Name: <%= @teacher.name %> </h3>
-Associated course : <%= @teacher.course ? @teacher.course.title: N/A %> <br>
-
+<a href="/teachers">Back</a><br>
+<br><p><b>Name: </b><%= @teacher.name %> </p>
+<p><b>Email: </b><%= @teacher.email %></p>
+<p><b>Address: </b><%= @teacher.address %></p>
+<p><b>Course:</b> <%= @teacher.course %></p>
+<p><b>Student: </b><%= @teacher.student %></p>
 <% if @teacher.user == current_user %>
 <a href="/teachers/<%= @teacher.id%>/edit">Edit </a>
 

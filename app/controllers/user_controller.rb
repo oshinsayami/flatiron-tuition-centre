@@ -6,13 +6,13 @@ class UserController < ApplicationController
 
     post "/signup" do
         u = User.new(fullname: params["fullname"], email: params["email"], password: params["password"])
-        if u.email.blank? || u.password.blank? || User.find_by_email(params["email"])
+        if u.email.blank? || u.password.blank? || User.find_by_email(params["email"]) || u.fullname.blank?
 
             redirect '/signup'
         else
             u.save
             session[:user_id] = u.id
-            redirect '/courses'
+            redirect '/teachers'
 
         end
     end
@@ -25,7 +25,7 @@ class UserController < ApplicationController
         user= User.find_by_email(params[:email])
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id
-            redirect '/courses'
+            redirect '/teachers'
         else
             redirect '/login'
         end

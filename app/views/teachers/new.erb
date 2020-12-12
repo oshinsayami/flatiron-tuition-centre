@@ -1,14 +1,14 @@
-<%if logged_in? %>
+<%if logged_in?%>
 <p align="right"><a href="/logout">Log out</a>
-<%end%>
+
 <h2>Add Teachers </h2>
 <form method="post" action="/teachers">
-Teacher Name : <input name="name" type="text"><br>
-Add associated course to this teacher: 
-<select name="course_id">
-<% Course.all.each do |course| %>
-<option value="<%= course.id %>"><%= course.title %></option>
-<% end %>
+<p>Full Name : <input name="name" type="text" required></p>
+<p>Email: <input name="email" type="email" required></p>
+<p>Address: <input name="address" type="text"></p>
+<p>Course: <input name="course" type="text" required></p>
+<p>Student: <input name="student" type="text"></p>
 <input type="submit" value="Add">
 </form>
+<%end%>
 
