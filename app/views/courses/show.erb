@@ -1,8 +1,9 @@
 <%if logged_in? %>
 <p align="right"><a href="/logout">Log out</a>
 <%end%>
-<h2> Show page </h2><br>
+<p align="right"><a href="/courses">Go back</a></p>
 <h3>Name: <%= @course.title %> </h3>
+<h3>Course Duration: <%= @course.duration %></h3>
 
 <a href="/courses/<%= @course.id%>/edit"> Edit </a>
 

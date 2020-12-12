@@ -8,6 +8,7 @@ class StudentController < ApplicationController
 
     get '/students/new' do
         redirect_if_not_logged_in
+       
         erb :"students/new"
     end
 
@@ -43,6 +44,12 @@ class StudentController < ApplicationController
         @student = Student.find(params["id"])
         @student.destroy
         redirect '/students'
+    end
+
+    def redirect_if_not_authorized
+        if @teacher.user != current_user
+            redirect '/teachers'
+        end
     end
 
 end

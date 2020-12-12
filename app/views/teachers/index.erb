@@ -1,7 +1,12 @@
 <%if logged_in? %>
 <p align="right"><a href="/logout">Log out</a>
 <%end%>
-<p align="right"><a href="/teachers/new">Add Teacher</a></p>
+<p align="right"><a href="/teachers/new">Add Teacher|
+<a href="/courses/new">Add Course|
+<a href="/students/new">Add Student</a><br>
+<p align="right"><a href="/teachers">View Teachers|
+<a href="/courses">View Courses|
+<a href="/students">View Students</a></p>
 <h1>List of teachers</h1>
 <% @teachers.each_with_index do |c,i| %>
   <%= i+1%> -  <a href="/teachers/<%= c.id%>" ><%= c.name %></a><br>
