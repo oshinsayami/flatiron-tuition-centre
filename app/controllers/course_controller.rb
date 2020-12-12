@@ -10,13 +10,14 @@ class CourseController < ApplicationController
     end
 
     get '/courses/:id' do
+        redirect_if_not_logged_in
         @course = Course.find(params["id"])
         erb :"courses/show"
     end
 
     post '/courses' do
+        redirect_if_not_logged_in
         course= Course.new(params)
-        # binding.pry
         course.save
         redirect '/courses'
     end
@@ -35,7 +36,7 @@ class CourseController < ApplicationController
 
     end
 
-    delete 'courses/:id' do
+    delete '/courses/:id' do
         @course = Course.find(params["id"])
         @course.destroy
         redirect '/courses'

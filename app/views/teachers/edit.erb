@@ -1,0 +1,12 @@
+<%if logged_in? %>
+<p align="right"><a href="/logout">Log out</a>
+<%end%>
+<h1> Edit Teacher</h1>
+<form method="post" action="/teachers/<%=@teacher.id%>">
+<input type="hidden" name="_method" value="patch">
+
+Teacher name : <input name="teacher[name]" type="text" value="<%=@teacher.name%>">
+
+
+<input type="submit" value="Update">
+</form>

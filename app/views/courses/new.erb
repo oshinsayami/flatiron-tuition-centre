@@ -1,10 +1,8 @@
-<h2>Add Courses </h2>
+<%if logged_in? %>
+<p align="right"><a href="/logout">Log out</a>
+<%end%>
+<h2>Add a Course </h2>
 <form method="post" action="/courses">
 Course Title : <input name="title" type="text">
-Teacher:
-<select name="teacher_id">
-<% Teacher.all.each do |teacher| %>
-<option value="<%= teacher.id %>"><%= teacher.name %></option>
-<% end %>
 <input type="submit" value="Add">
 </form>

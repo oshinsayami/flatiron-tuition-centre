@@ -1,3 +1,6 @@
+<%if logged_in? %>
+<p align="right"><a href="/logout">Log out</a>
+<%end%>
 <h1> Edit course </h1>
 <form method="post" action="/courses/<%=@course.id%>">
 <input type="hidden" name="_method" value="patch">

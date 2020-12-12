@@ -1,1 +1,15 @@
-<h1> New page </h1>
+<%if logged_in? %>
+<p align="right"><a href="/logout">Log out</a>
+<%end%>
+<h2>Add Students </h2>
+<form method="post" action="/students">
+Student Name : <input name="name" type="text">
+Student Email: <input name="email" type="email">
+Student's Grade: <input name="grade" type="text">
+Add enrolled course to this student: 
+<select name="course_id">
+<% Course.all.each do |course| %>
+<option value="<%= course.id %>"><%= course.title %></option>
+<% end %>
+<input type="submit" value="Add">
+</form>
