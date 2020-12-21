@@ -7,10 +7,19 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, ENV['SESSION_SECRET']
+    set :show_exceptions, false
   end
 
   get "/" do
     erb :welcome
+  end
+
+  error 500 do
+    redirect '/'
+  end
+
+  error 404 do
+    redirect '/'
   end
 
   helpers do
