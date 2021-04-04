@@ -1,5 +1,6 @@
 require './config/environment'
 
+
 class ApplicationController < Sinatra::Base
 
   configure do
@@ -38,5 +39,11 @@ class ApplicationController < Sinatra::Base
       redirect '/login'
     end
   end
+
+  def redirect_if_not_authorized(record)
+    if record.user != current_user
+        redirect '/'
+    end
+end
 
 end

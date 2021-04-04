@@ -3,9 +3,12 @@
 
 <h2>Add Teachers </h2>
 <form method="post" action="/teachers">
-<p>Full Name : <input name="name" type="text" required></p>
-<p>Email: <input name="email" type="email" required></p>
-<p>Address: <input name="address" type="text" required></p>
+<% if @message %>
+<p><%= @message %></p>
+<% end %>
+<p>Full Name : <input name="name" type="text" ></p>
+<p>Email: <input name="email" type="email" ></p>
+<p>Address: <input name="address" type="text" ></p>
 <p>Course: 
 <select name="course">
   <option value="HTML">HTML</option>
@@ -14,7 +17,7 @@
   <option value="CSS">CSS</option>
   <option value="JAVA">JAVA</option>
 </select></p>
-<p>Student: <input name="student" type="text" required></p>
+<p>Student: <input name="student" type="text"></p>
 <input type="submit" value="Add">
 </form>
 <%end%>

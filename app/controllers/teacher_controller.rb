@@ -13,45 +13,47 @@ class TeacherController < ApplicationController
 
     get '/teachers/:id' do
         redirect_if_not_logged_in
-        @teacher = Teacher.find(params["id"])
+        set_teacher
         erb :"teachers/show"
     end
 
     post '/teachers' do
         redirect_if_not_logged_in
-        teacher= Teacher.new(params)
-        teacher.user_id = session[:user_id]
-        teacher.save
-        redirect '/teachers'
+        
+        teacher= current_user.teachers.new(params)
+        if teacher.valid?
+            teacher.save
+            redirect '/teachers'
+        else
+            @message= teacher.errors.full_messages.to_sentence
+            erb  :"teachers/new"
+        end
     end
 
     get '/teachers/:id/edit' do
-        @teacher = Teacher.find(params["id"])
-        redirect_if_not_authorized
+        set_teacher
+        redirect_if_not_authorized(@teacher)
         erb :"teachers/edit"
 
     end
 
     patch '/teachers/:id' do
-        @teacher = Teacher.find(params["id"])
-        redirect_if_not_authorized
+        set_teacher
+        redirect_if_not_authorized(@teacher)
         @teacher.update(params["teacher"])
         redirect "/teachers/#{@teacher.id}"
     end
 
     delete '/teachers/:id' do
-        @teacher = Teacher.find(params["id"])
-        redirect_if_not_authorized
+        redirect_if_not_authorized(@teacher)
         @teacher.destroy
         redirect '/teachers'
     end
-
+    
     private
-
-    def redirect_if_not_authorized
-        if @teacher.user != current_user
-            redirect '/teachers'
-        end
+    
+    def set_teacher
+        @teacher = Teacher.find(params["id"])
     end
 
 end
